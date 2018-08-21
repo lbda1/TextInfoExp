@@ -7,3 +7,4 @@
  cnn做文本分类源码参考自 https://github.com/dennybritz/cnn-text-classification-tf.git
   
  解决原项目环境不适配tensorflow1.0以上版本的问题。
+ 里面有两种分类器(1)cnn(2)scikit-learn(传统机器学习)
