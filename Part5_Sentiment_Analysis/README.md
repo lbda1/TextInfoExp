@@ -3,7 +3,7 @@
 
  核心代码 fork from https://github.com/chaoming0625/SentimentPolarityAnalysis.git
   
- 调整代码在当前环境可直接运行，直接晕车test.py即可
+ 调整代码在当前环境可直接运行，直接运行test.py即可(里面有train和test)
   
  f_corpus中有5各数据集，3个中文2个英文。
  
