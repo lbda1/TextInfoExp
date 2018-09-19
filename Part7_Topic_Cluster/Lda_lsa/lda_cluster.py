@@ -21,9 +21,10 @@ def create_data(corpus_path):#构建数据，先后使用doc2bow和tfidf model�
             break
     #对文本进行处理，得到文本集合中的词表
     dictionary = corpora.Dictionary(sentences)
-    #利用词表，对文本进行cbow表示
+    #利用词表，对文本中每个句子进行cbow表示
+    #doc2bow(text)的输出格式是(token_id, token_count)
     corpus = [dictionary.doc2bow(text) for text in sentences]
-    #利用cbow，对文本进行tfidf表示
+    #利用cbow，对文本进行tfidf表示 【文章数，总词数】1266*4732
     tfidf=TfidfModel(corpus)
     corpus_tfidf=tfidf[corpus]
     return sentence_dict,dictionary,corpus,corpus_tfidf
@@ -32,6 +33,7 @@ def lda_model(sentence_dict,dictionary,corpus,corpus_tfidf,cluster_keyword_lda):
     lda = LdaModel(corpus=corpus_tfidf, id2word=dictionary, num_topics=11)
     f_keyword = open(cluster_keyword_lda, 'w+')
     for topic in lda.print_topics(11,53):
+        #11个topic，每个topic输出53个词
         print('****'*5)
         words=[]
         for word in topic[1].split('+'):

@@ -1,13 +1,16 @@
 #!/usr/bin/python
 # -*- coding:utf8 -*-
+# 聚类并输出每个类主要关键词
+# tfidf的输出矩阵形式是【行数*总词数】
 import os,sys
 # reload(sys)
 # sys.setdefaultencoding('utf-8')
 from sklearn.cluster import KMeans
 from sklearn import feature_extraction
 from sklearn.feature_extraction.text import TfidfTransformer
+#该类会统计每个词语的tf-idf权值
 from sklearn.feature_extraction.text import CountVectorizer
-
+#该类会将文本中的词语转换为词频矩阵，矩阵元素a[i][j] 表示j词在i类文本下的词频
 '''vectorize the input documents'''
 def tfidf_vector(corpus_path):
     corpus_train=[]
@@ -64,6 +67,7 @@ def cluster_kmeans(tfidf_train,word_dict,cluster_docs,cluster_keywords,num_clust
     f_clusterwords.close()
 
 '''select the best cluster num'''
+#选择最优的K值，获取最优的K之后然后修改main中类个数
 def best_kmeans(tfidf_matrix,word_dict):  
     import matplotlib.pyplot as plt 
     from matplotlib.font_manager import FontProperties 
