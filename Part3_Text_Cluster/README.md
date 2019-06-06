@@ -10,3 +10,8 @@ data_test 为测试的数据集，需要上交此数据集的聚类结果。
 
 里面具体的聚类读错数据，但是里面的tfidf等方法可以使用
 
+修改的地方
+（1）data_offline 改为 data
+（2）先运行get_res.py中的get_text()
+（3）再运行TextCluster.py
+
